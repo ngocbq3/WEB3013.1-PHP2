@@ -1,14 +1,14 @@
 <?php
 class BaseModel
 {
+    private $hostname = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $dbname = "shopao";
     public function __construct()
     {
-        $hostname = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "shopao";
         try {
-            $this->conn = new PDO("mysql:host=$hostname; dbname=$dbname; charset=utf8", $username, $password);
+            $this->conn = new PDO("mysql:host=$this->hostname; dbname=$this->dbname; charset=utf8", $this->username, $this->password);
         } catch (PDOException $e) {
             echo "Lỗi kết nối cơ sở dữ liệu<br>" . $e->getMessage();
         }

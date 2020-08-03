@@ -12,4 +12,8 @@ class HomeController extends Controller
             'product' => $product
         ]);
     }
+    public static function notFound()
+    {
+        echo "Không tìm thấy file";
+    }
 }

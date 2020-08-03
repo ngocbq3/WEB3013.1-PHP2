@@ -1,11 +1,6 @@
 <?php
 require_once "config.php";
-require_once "model/BaseModel.php";
-require_once "model/Categories.php";
-require_once "model/Product.php";
-require_once "controller/Controller.php";
-require_once "controller/HomeController.php";
-require_once "controller/CategoryController.php";
+require_once "autoload.php";
 $url =  isset($_GET['url']) ? $_GET['url'] : "";
 $url = explode('/', $url);
 if ($url[0] == "") {
@@ -25,6 +20,14 @@ switch ($controller) {
         if (isset($url[1])) {
             $c->category($url[1]);
         }
+        break;
+    case 'list-category':
+        $c = new CategoryController;
+        $c->list();
+        break;
+    case 'add-category':
+        $c = new CategoryController;
+        $c->add();
         break;
     case 'about':
         $c = new Controller;
