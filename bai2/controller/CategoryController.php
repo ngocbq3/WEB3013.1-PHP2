@@ -46,4 +46,34 @@ class CategoryController extends Controller
         }
         $this->render("view/admin/layoutmaster", ['page' => 'category/add']);
     }
+    //Sửa danh mục
+    public function edit($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            extract($_REQUEST);
+            $date = date('Y-m-d H:i:s');
+            $c = new Categories;
+            $c->update([
+                'cate_name' => $cate_name,
+                'desc' => $desc,
+                'updated_at' => $date
+            ], $id);
+            $_SESSION['message'] = "Cập nhật dữ liệu thành công";
+            header("location: " . ROOT . 'list-category');
+            die;
+        }
+        $category = Categories::findOne($id);
+        $this->render("view/admin/layoutmaster", [
+            'page' => 'category/edit',
+            'category' => $category
+        ]);
+    }
+    //Xóa danh mục
+    public function delete($id)
+    {
+        $c = new Categories;
+        $c->delete($id);
+        $_SESSION['message'] = "Xóa dữ liệu thành công";
+        $this->list();
+    }
 }

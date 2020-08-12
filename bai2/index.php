@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "config.php";
 require_once "autoload.php";
 $url =  isset($_GET['url']) ? $_GET['url'] : "";
@@ -24,11 +25,19 @@ switch ($controller) {
     case 'list-category':
         $c = new CategoryController;
         $c->list();
+        if (isset($url[1])) {
+            $c->delete($url[1]);
+        }
         break;
     case 'add-category':
         $c = new CategoryController;
         $c->add();
         break;
+    case 'edit-category':
+        $c = new CategoryController;
+        if (isset($url[1])) {
+            $c->edit($url[1]);
+        }
     case 'about':
         $c = new Controller;
         //$c->about();
