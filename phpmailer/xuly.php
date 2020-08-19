@@ -12,7 +12,8 @@ require 'vendor/autoload.php';
 $mail = new PHPMailer(true);
 //Lấy dữ liệu từ form
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+    var_dump($_FILES['fileUpload']);
+    die;
     extract($_REQUEST);
     if ($_FILES['fileUpload']['size'] > 0) {
         $file_name = $_FILES['fileUpload']['name'];

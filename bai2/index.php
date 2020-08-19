@@ -38,6 +38,14 @@ switch ($controller) {
         if (isset($url[1])) {
             $c->edit($url[1]);
         }
+    case 'list-product':
+        $c = new ProductController;
+        $c->index();
+        break;
+    case 'add-product':
+        $c = new ProductController;
+        $c->add();
+        break;
     case 'about':
         $c = new Controller;
         //$c->about();
