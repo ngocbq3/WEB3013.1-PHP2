@@ -18,7 +18,7 @@ class BaseModel
     public static function listAll()
     {
         $model = new static;
-        $sqlBuider = "Select * From $model->tableName";
+        $sqlBuider = "Select * From $model->tableName ORDER BY id DESC";
         $stmt = $model->conn->prepare($sqlBuider);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_CLASS, get_class($model));

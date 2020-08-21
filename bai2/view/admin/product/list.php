@@ -2,7 +2,7 @@
 $products = $data['products'];
 
 ?>
-
+<a href="<?= ROOT ?>add-product">Add product</a>
 <table border="1">
     <tr>
         <th>id</th>
@@ -23,7 +23,10 @@ $products = $data['products'];
             <td><?= $p->cate_id ?></td>
             <td><?= $p->created_at ?></td>
             <td><?= $p->updated_at ?></td>
-            <td>Action</td>
+            <td>
+                <a href="<?= ROOT ?>edit-product/<?= $p->id ?>">Sửa</a>
+                <a href="<?= ROOT ?>list-product/<?= $p->id ?>">Xóa</a>
+            </td>
         </tr>
     <?php endforeach; ?>
 </table>
