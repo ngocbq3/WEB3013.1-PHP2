@@ -12,6 +12,10 @@ class HomeController extends Controller
             'product' => $product
         ]);
     }
+    public function admin()
+    {
+        $this->render('view/admin/layoutmaster', ['page' => 'home']);
+    }
     public static function notFound()
     {
         echo "Không tìm thấy file";

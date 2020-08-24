@@ -56,6 +56,19 @@ switch ($controller) {
         $c = new ProductController;
         $c->add();
         break;
+    case 'login':
+        $c = new UserController;
+        $c->login();
+        break;
+    case 'admin':
+        $c = new HomeController;
+        $c->admin();
+        break;
+    case 'logout':
+        unset($_SESSION['user']);
+        header("Location:" . ROOT . 'login');
+        die;
+        break;
     case 'about':
         $c = new Controller;
         //$c->about();

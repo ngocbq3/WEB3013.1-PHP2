@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION['user'])) {
+    header('Location:' . ROOT . 'login');
+    die;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +19,8 @@
         <a href="<?= ROOT ?>list-category">Danh mục sản phẩm</a> |
         <a href="<?= ROOT ?>list-product">Sản phẩm</a>
     </nav>
+    Username: <b><?= $_SESSION['user'] ?></b>
+    <a href="<?= ROOT . 'logout' ?>">Logout</a>
     <?php
     require_once "./view/admin/" . $data['page'] . ".php";
     ?>
