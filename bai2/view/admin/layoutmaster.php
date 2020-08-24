@@ -3,6 +3,9 @@ if (!isset($_SESSION['user'])) {
     header('Location:' . ROOT . 'login');
     die;
 }
+if (isset($_SESSION['login'])) {
+    var_dump($_SESSION['login']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
